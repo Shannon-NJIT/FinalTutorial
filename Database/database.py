@@ -2,7 +2,7 @@ from .models import db
 from sqlalchemy import create_engine, MetaData, Table, Integer, String, \
     Column, DateTime, ForeignKey, Numeric, SmallInteger
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, sessionmaker, Session
+
 
 engine = create_engine('sqlite:////web/Sqlite-Data/example.db')
 
