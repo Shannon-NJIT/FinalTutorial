@@ -1,6 +1,5 @@
 from .models import db
-from sqlalchemy import create_engine, MetaData, Table, Integer, String, \
-    Column, DateTime, ForeignKey, Numeric, SmallInteger
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
 
