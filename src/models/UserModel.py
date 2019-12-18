@@ -13,9 +13,6 @@ engine = create_engine('sqlite:////web/Sqlite-Data/blog_api_db.db')
 model = declarative_base()
 
 class UserModel(db.Model):
-    """
-    User Model
-    """
 
     # table name
     __tablename__ = 'users'
