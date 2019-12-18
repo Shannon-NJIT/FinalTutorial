@@ -3,4 +3,4 @@ ADD . /web
 WORKDIR /web
 RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
-CMD ["/web/Database/app.py"]
+CMD ["/web/src/app.py"]
