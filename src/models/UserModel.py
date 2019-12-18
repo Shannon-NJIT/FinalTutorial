@@ -3,7 +3,7 @@ from marshmallow import fields, Schema
 import datetime
 from . import db
 from ..app import bcrypt
-
+from .BlogpostModel import BlogpostSchema
 
 class UserModel(db.Model):
     """
@@ -19,6 +19,8 @@ class UserModel(db.Model):
     password = db.Column(db.String(128), nullable=True)
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
+    blogposts = db.relationship('BlogpostModel', backref='users', lazy=True)
+
 
     # class constructor
     def __init__(self, data):
@@ -55,6 +57,18 @@ class UserModel(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+    def __repr(self):
+        return '<id {}>'.format(self.id)
+
+class UserSchema(Schema):
+    id = fields.Int(dump_only=True)
+    name = fields.Str(required=True)
+    email = fields.Email(required=True)
+    password = fields.Str(required=True)
+    created_at = fields.DateTime(dump_only=True)
+    modified_at = fields.DateTime(dump_only=True)
+    blogposts = fields.Nested(BlogpostSchema, many=True)
 
     @staticmethod
     def get_all_users():
