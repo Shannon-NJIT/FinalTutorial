@@ -4,6 +4,13 @@ import datetime
 from . import db
 from ..app import bcrypt
 from .BlogpostModel import BlogpostSchema
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+
+
+engine = create_engine('sqlite:////web/Sqlite-Data/blog_api_db.db')
+
+model = declarative_base()
 
 class UserModel(db.Model):
     """
