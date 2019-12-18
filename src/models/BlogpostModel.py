@@ -2,7 +2,13 @@
 from . import db
 import datetime
 from marshmallow import fields, Schema
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
 
+
+engine = create_engine('sqlite:////web/Sqlite-Data/blog_api_db.db')
+
+model = declarative_base()
 
 class BlogpostModel(db.Model):
     """
