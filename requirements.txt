@@ -7,3 +7,4 @@ marshmallow
 flask-bcrypt
 pyjwt
 pytest--cov
+gunicorn
