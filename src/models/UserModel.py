@@ -58,17 +58,6 @@ class UserModel(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def __repr(self):
-        return '<id {}>'.format(self.id)
-
-class UserSchema(Schema):
-    id = fields.Int(dump_only=True)
-    name = fields.Str(required=True)
-    email = fields.Email(required=True)
-    password = fields.Str(required=True)
-    created_at = fields.DateTime(dump_only=True)
-    modified_at = fields.DateTime(dump_only=True)
-    blogposts = fields.Nested(BlogpostSchema, many=True)
 
     @staticmethod
     def get_all_users():
@@ -80,3 +69,12 @@ class UserSchema(Schema):
 
     def __repr(self):
         return '<id {}>'.format(self.id)
+
+class UserSchema(Schema):
+    id = fields.Int(dump_only=True)
+    name = fields.Str(required=True)
+    email = fields.Email(required=True)
+    password = fields.Str(required=True)
+    created_at = fields.DateTime(dump_only=True)
+    modified_at = fields.DateTime(dump_only=True)
+    blogposts = fields.Nested(BlogpostSchema, many=True)
